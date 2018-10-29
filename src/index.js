@@ -10,5 +10,7 @@ const handler = () => console.log(`server started on port ${port}`); // eslint-d
 
 app.use(compression());
 app.use(morgan("common"));
-app.get("/currencies-status", (req, res) => res.send(data));
+app.get("/currencies-status", (req, res) =>
+  res.send(data.filter(el => el.status === "KO"))
+);
 app.listen(port, handler);
