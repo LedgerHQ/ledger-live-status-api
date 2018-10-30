@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const morgan = require("morgan");
 const compression = require("compression");
 
@@ -8,6 +9,7 @@ const app = express();
 const port = process.env.LL_STATUS_PORT || 3322;
 const handler = () => console.log(`server started on port ${port}`); // eslint-disable-line no-console
 
+app.use(cors());
 app.use(compression());
 app.use(morgan("common"));
 app.get("/currencies-status", (req, res) =>
